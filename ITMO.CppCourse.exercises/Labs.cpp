@@ -20,8 +20,19 @@ void target();
 
 //-------------
 
-//3.
-string privet(string);
+//3.Control.1
+// see func: int snils(string);
+//3.Control.2
+void cubeFirst(int);
+void cubeSecond(int);
+//3.Control.3
+void triangleS(int x);
+void triangleS(int x, int y, int z);
+void triChoice(int x, int y, int z);
+//3.Control.4
+int recSum(int);
+//3.Control.5
+int DecToBin(int y);
 
 int main()
 {
@@ -33,18 +44,88 @@ int main()
 	//coins();
 	//target();
 
-	//// 3.
-	//string name;
-	//cin >> name;
-	//string nameOut = privet(name);
-	//cout << nameOut;
+	// Практика 3
+	int x = 6;
+	int y = 20;
+	int z = 10;
+
+	//cubeFirst(x);
+	//cubeSecond(x);
+
+	//triChoice(x, y, z);
+
+	//cout << "Summ: " << recSum(x);
+	DecToBin(x);
 }
 
-//string privet(string name)
-//{
-//	string str = name + ", " + "hello!\n";
-//	return str;
-//}
+// Практика 3 
+
+//Применение рекурсии для перевода целого числа в двоичный код
+
+int DecToBin(int x) {
+	if (x >= 1) {
+		DecToBin(x / 2);
+		cout << x % 2;
+	}
+	return 0;
+}
+
+// Рекурсивная функция суммы ряда
+
+int recSum(int n) {
+	if (n > 0) {
+		return (5*n + recSum(n - 1));
+	}
+	return 0;
+}
+
+// Треугольники
+
+void triChoice(int x, int y, int z) {
+	int i;
+	cout << "Please choose type of tri. 1 for equal, 2 for scalene\n";
+	cin >> i;
+	if (i == 1) 
+		triangleS(x);
+	else if (i == 2) 
+		triangleS(x, y , z);
+}
+
+void triangleS(int x) {
+	double s;
+	s = x * x * pow(3, 1.0 / 3) * 0.25;
+	cout << "Squre of equalTri with side " << x << " is: " << s << endl;
+}
+
+void triangleS(int x, int y, int z) {
+	double s, p, k;
+	p = (x + y + z) / 2;
+	k = p * (p - x) * (p - y) * (p - z);
+	s = pow(k, 1.0/2);
+	cout << "Squre of triangle: " << s << endl;
+}
+ 
+// Кубический корень
+
+void cubeFirst(int x) {
+	double y;
+	y = pow(x, 1.0 / 3);
+	cout << "Cube root of " << x << " is: " << y << endl;
+}
+void cubeSecond(int x) {
+	double y1, y0, k;
+	k = 0.0001;
+	y1 = 1;
+	do {
+		y0 = y1;
+		y1 = (x / (y0 * y0) + 2 * y0) / 3;
+	} while (abs(y1 - y0) >= k);
+
+	cout << "Cube root of " << x << " is: " << y1 << endl;
+}
+
+
+// Практика 2
 
 // мишень
 
