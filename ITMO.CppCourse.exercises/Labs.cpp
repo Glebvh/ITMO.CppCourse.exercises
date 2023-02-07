@@ -44,7 +44,7 @@ int main()
 	//coins();
 	//target();
 
-	// Практика 3
+	// Practice 3
 	int x = 6;
 	int y = 20;
 	int z = 10;
@@ -58,9 +58,9 @@ int main()
 	DecToBin(x);
 }
 
-// Практика 3 
+// Practice 3
 
-//Применение рекурсии для перевода целого числа в двоичный код
+// To Binary by recursion
 
 int DecToBin(int x) {
 	if (x >= 1) {
@@ -70,7 +70,7 @@ int DecToBin(int x) {
 	return 0;
 }
 
-// Рекурсивная функция суммы ряда
+// Summ by recursion
 
 int recSum(int n) {
 	if (n > 0) {
@@ -79,7 +79,7 @@ int recSum(int n) {
 	return 0;
 }
 
-// Треугольники
+// Triangls
 
 void triChoice(int x, int y, int z) {
 	int i;
@@ -105,7 +105,7 @@ void triangleS(int x, int y, int z) {
 	cout << "Squre of triangle: " << s << endl;
 }
  
-// Кубический корень
+// Cube root
 
 void cubeFirst(int x) {
 	double y;
@@ -125,9 +125,9 @@ void cubeSecond(int x) {
 }
 
 
-// Практика 2
+// Practice 2
 
-// мишень
+// target
 
 void target() {
 	double x, y;
@@ -154,7 +154,7 @@ void target() {
 		cout << "Junior sniper" << endl;
 }
 
-// монеты
+// Coins
 
 void coins() {
 	unsigned short summ;
@@ -172,7 +172,7 @@ void coins() {
 	}
 }
 
-// снилс
+// SNILS
 
 int snils(string snils) {
 	int x = snils.length();
@@ -223,7 +223,7 @@ int snils(string snils) {
 	}
 }
 
-// суперпростое
+// Superprime
 
 int prime() {
 
