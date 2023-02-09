@@ -1,7 +1,9 @@
 #include <iostream>
+#include <istream>
 #include <string>
 #include <cmath>
 #include <string>
+#include <sstream>
 using namespace std;
 
 //1.Control
@@ -21,7 +23,7 @@ void target();
 //-------------
 
 //3.Control.1
-// see func: int snils(string);
+int snilsCheck(string snils);
 //3.Control.2
 void cubeFirst(int);
 void cubeSecond(int);
@@ -55,7 +57,9 @@ int main()
 	//triChoice(x, y, z);
 
 	//cout << "Summ: " << recSum(x);
-	DecToBin(x);
+	//DecToBin(x);
+	string snils =  "143-438-170 49";
+	snilsCheck(snils);
 }
 
 // Practice 3
@@ -122,6 +126,70 @@ void cubeSecond(int x) {
 	} while (abs(y1 - y0) >= k);
 
 	cout << "Cube root of " << x << " is: " << y1 << endl;
+}
+
+// Practice 3 SNILS
+
+int snilsCheck(string snils) {
+
+	int sum = 0;
+
+	// String clean
+	snils.erase(remove(snils.begin(), snils.end(), '-'), snils.end());
+	snils.erase(remove(snils.begin(), snils.end(), ' '), snils.end());
+
+	// String to int array
+	int snilsArr[11];
+	int x = size(snilsArr);
+	stringstream ss;
+	for (int i = 0; i < x; i++) {
+		ss << snils[i];
+		ss >> snilsArr[i];
+		ss.str("");
+		ss.clear();
+	}
+	
+	// Control Sum & 2 numbers check
+	for (int i = x - 2, j = 0; i >= 1, j <= x - 3; i--, j++) {
+		if (snilsArr[j] == snilsArr[j + 1] && j <= 7) {
+			cout << "Wrong snils number!" << endl;
+			return 0;
+		}
+		else {
+			sum = sum + i * snilsArr[j];
+		}
+	}
+	
+	// Control number calc
+	int contArr[2];
+	if (sum < 100) {
+		contArr[0] = sum / 10;
+		contArr[1] = sum % 10;
+	}
+	else if (sum == 100 || sum == 101) {
+		contArr[0] = 0;
+		contArr[1] = 0;
+	}
+	else if (sum > 101) {
+		sum = sum % 101;
+		if (sum < 100) {
+			contArr[0] = sum / 10;
+			contArr[1] = sum % 10;
+		}
+		else if (sum == 100) {
+			contArr[0] = 0;
+			contArr[1] = 0;
+		}
+	}
+	// Control number check
+	if (snilsArr[9] == contArr[0] && snilsArr[10] == contArr[1]) {
+		cout << "SNILS is true" << endl;
+		return 0;
+	}
+	else {
+		cout << "SNILS is false" << endl;
+		return 0;
+	}
 }
 
 
