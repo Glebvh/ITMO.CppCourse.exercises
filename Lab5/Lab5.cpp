@@ -16,10 +16,6 @@ void arrayFirst(int Arr[], const int n);
 
 
 //Control_1.2
-void show_array(const int Arr[], const int N);
-bool from_min(const int a, const int b);
-bool from_max(const int a, const int b);
-void bubble_sort(int Arr[], const int N, bool (*compare)(int a, int b));
 void sortArr(int Arr[], const int N);
 
 //control 2
@@ -224,40 +220,20 @@ void sumAll(int Arr[], const int n) {
 // 1.2
 
 void sortArr(int Arr[], const int n) {
-	bool (*from_f[2])(int, int) = { from_min,from_max };
-	int my_choose = 0;
-	cout << "1. From min to max\n";
-	cout << "2. From max to min\n";
-	cin >> my_choose;
-	cout << "Array to sort: ";
-	show_array(Arr, n);
-	bubble_sort(Arr, n, from_f[my_choose - 1]);
-	show_array(Arr, n);
-}
-
-void show_array(const int Arr[], const int N)
-{
-	for (int i = 0; i < N; i++)
-			cout << Arr[i] << " ";
-	cout << "\n";
-}
-
-bool from_min(const int a, const int b)
-{
-	return a > b;
-}
-bool from_max(const int a, const int b)
-{
-	return a < b;
-}
-
-void bubble_sort(int Arr[], const int N, bool (*compare)(int a, int b))
-{
-	for (int i = 1; i < N; i++)
+	int min = 0;
+	int buf = 0;
+	for (int i = 0; i < n; i++)
 	{
-		for (int j = 0; j < N - 1; j++)
+		min = i;
+		for (int j = i + 1; j < n; j++)
+			min = (Arr[j] < Arr[min]) ? j : min;
+		if (i != min)
 		{
-			if ((*compare)(Arr[j], Arr[j + 1])) swap(Arr[j], Arr[j + 1]);
+			buf = Arr[i];
+			Arr[i] = Arr[min];
+			Arr[min] = buf;
 		}
 	}
+	for (int i = 0; i < n; i++)
+		cout << Arr[i] << ' ';
 }
