@@ -37,10 +37,9 @@ struct Time {
 
 		ttemp1 = t1.hours * 3600 + t1.minutes * 60 + t1.seconds;
 		ttemp2 = t2.hours * 3600 + t2.minutes * 60 + t2.seconds;
-		
 
 		sub = abs(ttemp1 - ttemp2);
-		cout << sub << endl;
+		
 		cout << "Sub of interval is " << sub / 3600 << " hours "
 			<< (sub % 3600) / 60 << " minutes "
 			<< ((sub % 3600) % 60) << " seconds." << endl;
