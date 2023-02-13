@@ -17,14 +17,14 @@ struct Time {
 	int	minutes; 
 	int seconds;
 
-	Time addTime(const Time& t1, const Time& t2) {
+	Time addTime(const Time& t1) {
 		
 		Time t;
 		int sum;
 
-		t.hours = t1.hours + t2.hours;
-		t.minutes = t1.minutes + t2.minutes;
-		t.seconds = t1.seconds + t2.seconds;
+		t.hours = t1.hours + hours;
+		t.minutes = t1.minutes + minutes;
+		t.seconds = t1.seconds + seconds;
 
 		sum = t.hours * 3600 + t.minutes * 60 + t.seconds;
 
@@ -35,13 +35,13 @@ struct Time {
 		return t;
 	}
 
-	Time subTime(const Time& t1, const Time& t2) {
+	Time subTime(const Time& t1) {
 
 		Time t;
 		int sub, ttemp1, ttemp2;
 
 		ttemp1 = t1.hours * 3600 + t1.minutes * 60 + t1.seconds;
-		ttemp2 = t2.hours * 3600 + t2.minutes * 60 + t2.seconds;
+		ttemp2 = hours * 3600 + minutes * 60 + seconds;
 		sub = abs(ttemp1 - ttemp2);
 		
 		t.hours = sub / 3600;
@@ -85,9 +85,9 @@ int main()
 {
 	Time t1 = InputTime();
 	Time t2 = InputTime();
-	Time tsum = t1.addTime(t1, t2);
+	Time tsum = t1.addTime(t2);
 	showTime(tsum);
-	Time tsub = t1.subTime(t1, t2);
+	Time tsub = t1.subTime(t2);
 	showTime(tsub);
 
 	//-------------------------------------------------------------
