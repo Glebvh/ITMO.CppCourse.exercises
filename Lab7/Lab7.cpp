@@ -13,6 +13,7 @@ using namespace std;
 //Time
 
 struct Time {
+
 	int hours;
 	int	minutes; 
 	int seconds;
@@ -81,14 +82,100 @@ void showTime(Time t) {
 		<< t.seconds << " seconds." << endl;
 }
 
+// Roots Struct
+
+struct Roots
+{
+	double x1;
+	double x2;
+	int flag;
+};
+
+Roots rootsCalc(int a, int b, int c) {
+	Roots r;
+	int d;
+	d = b * b - 4 * a * c;
+	if (d < 0)
+		r.flag = -1;
+	else if (d == 0) {
+		r.x1 = (-b + pow(d, 0.5)) / (2 * a);
+		r.x2 = (-b + pow(d, 0.5)) / (2 * a);
+		r.flag = 0;
+	}
+	else if (d > 0) {
+		r.x1 = (-b + pow(d, 1.0 / 2)) / (2 * a);
+		r.x2 = (-b - pow(d, 0.5)) / (2 * a);
+		r.flag = 1;
+	}
+	return r;
+}
+
+//Roots Tuple
+using Tuple = tuple<double, double, int>;
+
+Tuple rootsTuple(double a, double b, double c) {
+	int d;
+	double x1, x2;
+	d = b * b - 4 * a * c;
+	if (d < 0)
+		return make_tuple(0, 0, -1);
+	else if (d == 0) {
+		x1 = (-b + pow(d, 0.5)) / (2 * a);
+		x2 = (-b + pow(d, 0.5)) / (2 * a);
+		return make_tuple(x1, x2, 0);
+	}
+	else if (d > 0) {
+		x1 = (-b + pow(d, 1.0 / 2)) / (2 * a);
+		x2 = (-b - pow(d, 0.5)) / (2 * a);
+		return make_tuple(x1, x2, 1);
+	}
+}
+
 int main()
 {
-	Time t1 = InputTime();
-	Time t2 = InputTime();
-	Time tsum = t1.addTime(t2);
-	showTime(tsum);
-	Time tsub = t1.subTime(t2);
-	showTime(tsub);
+
+	double a = 6;
+	double b = 5;
+	double c = 1;
+
+	//Roots Tuple
+
+	auto t = rootsTuple(a, b, c);
+	if (get<2>(t) == -1)
+		cout << "No roots" << endl;
+	else if (get<2>(t) == 0) {
+
+		cout << "x1 = x2 =" << get<0>(t) << endl;
+	}
+	else if (get<2>(t) == 1) {
+		cout << "x1 = " << get<0>(t) << endl;
+		cout << "x2 = " << get<1>(t) << endl;
+	}
+
+	//Roots Struct
+
+	Roots r = rootsCalc(a, b, c);
+
+	if (r.flag == -1)
+		cout << "No roots" << endl;
+	else if (r.flag == 0) {
+
+		cout << "x1 = x2 =" << r.x1 << endl;
+	}
+	else if (r.flag == 1) {
+		cout << "x1 = " << r.x1 << endl;
+		cout << "x2 = " << r.x2 << endl;
+	}
+
+
+	//Time
+	
+	//Time t1 = InputTime();
+	//Time t2 = InputTime();
+	//Time tsum = t1.addTime(t2);
+	//showTime(tsum);
+	//Time tsub = t1.subTime(t2);
+	//showTime(tsub);
 
 	//-------------------------------------------------------------
 	return 0;

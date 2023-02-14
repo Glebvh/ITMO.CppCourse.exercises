@@ -33,25 +33,25 @@ int main()
 	}
 
 	// Practice 4.2
-	int a, b;
-	if (Input(a, b) == false) // if(!Input(a,b))
-	{
-		cerr << "error";
-		return 1;
-	}
-	int s = a + b;
-	cout << "Sum: " << s << endl;
-	return 0;
-}
-
-int Input(int& a, int& b) {
-	cout << "Enter nums:" << endl;
-	cin >> a >> b;
-	if (a > 5 || b > 7)
-		return 0;
-	else
-		return 1;
-}
+//	int a, b;
+//	if (Input(a, b) == false) // if(!Input(a,b))
+//	{
+//		cerr << "error";
+//		return 1;
+//	}
+//	int s = a + b;
+//	cout << "Sum: " << s << endl;
+//	return 0;
+//}
+//
+//int Input(int& a, int& b) {
+//	cout << "Enter nums:" << endl;
+//	cin >> a >> b;
+//	if (a > 5 || b > 7)
+//		return 0;
+//	else
+//		return 1;
+//}
 
 int Myroot(double a, double b, double c, double& x1, double& x2) {
 	double d;
