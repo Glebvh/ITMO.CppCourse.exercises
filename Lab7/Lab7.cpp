@@ -145,7 +145,7 @@ int main()
 		cout << "No roots" << endl;
 	else if (get<2>(t) == 0) {
 
-		cout << "x1 = x2 =" << get<0>(t) << endl;
+		cout << "x1 = x2 = " << get<0>(t) << endl;
 	}
 	else if (get<2>(t) == 1) {
 		cout << "x1 = " << get<0>(t) << endl;
