@@ -16,6 +16,14 @@ public:
 
 	Time(int h, int m, int s)
 	{
+		Time t = timeTF(h, m, s);
+		hours = t.hours;
+		minutes = t.minutes;
+		seconds = t.seconds;
+	}
+
+	Time timeTF(int h, int m, int s) {
+		Time t;
 		if (s > 59) {
 			m += s / 60;
 			s = s % 60;
@@ -24,9 +32,11 @@ public:
 			h += m / 60;
 			m = m % 60;
 		}
-		hours = h;
-		minutes = m;
-		seconds = s;
+		t.hours = h;
+		t.minutes = m;
+		t.seconds = s;
+
+		return t;
 	}
 
 	void showTime() {
@@ -48,14 +58,7 @@ Time Time::addTime(const Time& t1) {
 	t.minutes = t1.minutes + minutes;
 	t.seconds = t1.seconds + seconds;
 
-	if (t.seconds > 59) {
-		t.minutes += t.seconds / 60;
-		t.seconds = t.seconds % 60;
-	}
-	if (t.minutes > 59) {
-		t.hours += t.minutes / 60;
-		t.minutes = t.minutes % 60;
-	}
+	t = timeTF(t.hours, t.minutes, t.seconds);
 
 	return t;
 }
