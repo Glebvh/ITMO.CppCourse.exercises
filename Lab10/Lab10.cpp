@@ -7,12 +7,11 @@ class Triangle {
 
 public:
 
-
-	Triangle(const Dot& a, const Dot& b, const Dot& c)
+	Triangle(Dot* a, Dot* b, Dot* c)
 	{
-		pointA = new Dot(a);
-		pointB = new Dot(b);
-		pointC = new Dot(c);
+		pointA = a;
+		pointB = b;
+		pointC = c;
 		
 	}
 
@@ -69,9 +68,11 @@ int main()
 	double x1 = 1, y1 = 1;
 	double x2 = 5, y2 = 5;
 	double x3 = 2, y3 = 6;
-	Dot a(x1, y1);
-	Dot b(x2, y2);
-	Dot c(x3, y3);
+
+	Dot* a = new Dot(x1, y1);
+	Dot* b = new Dot(x2, y2);
+	Dot* c = new Dot(x3, y3);
+
 	Triangle* tri = new Triangle(a, b, c);
 	tri->showSides();
 	double S = tri->triangleS();
@@ -80,6 +81,7 @@ int main()
 	cout << "Perimetr is " << P << endl;
 
 	delete tri;
+	delete a, b, c;
 	
 	return 0;
 }
