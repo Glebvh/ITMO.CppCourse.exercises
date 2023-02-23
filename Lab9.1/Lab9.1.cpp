@@ -48,9 +48,6 @@ int main()
 		cout << "third side: ";
 		cin >> c;
 
-		if (a + b < c || a + c < b || b + c < a) {
-			throw TriangleError();
-		}
 		Triangle tri;
 		tri.triangleS(a, b, c);
 		tri.showS();
