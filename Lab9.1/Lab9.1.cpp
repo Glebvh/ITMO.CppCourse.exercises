@@ -15,11 +15,16 @@ class Triangle {
 
 public:	
 
-	Triangle triangleS(int x, int y, int z) {
+	Triangle triangleS(int a, int b, int c) {
 		double p, k;
 		Triangle t;
-		p = (x + y + z) / 2;
-		k = p * (p - x) * (p - y) * (p - z);
+
+		if (a + b < c || a + c < b || b + c < a) {
+			throw TriangleError();
+		}
+
+		p = (a + b + c) / 2;
+		k = p * (p - a) * (p - b) * (p - c);
 		t.S = pow(k, 1.0 / 2);
 		return t;
 	}
