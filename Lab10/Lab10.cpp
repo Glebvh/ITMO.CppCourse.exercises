@@ -7,34 +7,36 @@ class Triangle {
 
 public:
 
-	Triangle(Dot a, Dot b, Dot c)
+
+	Triangle(const Dot& a, const Dot& b, const Dot& c)
 	{
-		pointA = a;
-		pointB = b;
-		pointC = c;
-		sideA = getA();
-		sideB = getB();
-		sideC = getC();
+		pointA = new Dot(a);
+		pointB = new Dot(b);
+		pointC = new Dot(c);
+		
 	}
 
 	double getA() {
-		return  pointA.distanceTo(pointB);
+		return pointA->distanceTo(pointB);
 	}
 	double getB() {
-		return  pointB.distanceTo(pointC);
+		return  pointB->distanceTo(pointC);
 	}
 	double getC() {
-		return  pointC.distanceTo(pointA);
+		return  pointC->distanceTo(pointA);
 	}
 
 	void showSides() {
-		cout << "First side: " << sideA << endl;
-		cout << "Second side: " << sideB << endl;
-		cout << "Third side: " << sideC << endl;
+		cout << "First side: " << getA() << endl;
+		cout << "Second side: " << getB() << endl;
+		cout << "Third side: " << getC() << endl;
 	}
 
 	double triangleP() {
 		
+		double sideA = getA();
+		double sideB = getB();
+		double sideC = getC();
 		double P  = sideA + sideB + sideC;
 
 		return P;
@@ -42,6 +44,9 @@ public:
 
 	double triangleS() {
 		double p, k, S;
+		double sideA = getA();
+		double sideB = getB();
+		double sideC = getC();
 
 		p = (sideA + sideB + sideC) / 2;
 		k = p * (p - sideA) * (p - sideB) * (p - sideC);
@@ -53,12 +58,9 @@ public:
 private:
 
 	double S;
-	double sideA;
-	double sideB;
-	double sideC;
-	Dot pointA;
-	Dot pointB;
-	Dot pointC;
+	Dot* pointA;
+	Dot* pointB;
+	Dot* pointC;
 };
 
 
