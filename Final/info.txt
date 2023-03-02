@@ -1,0 +1,2 @@
+Collegue: Doe John john@doe.com 777
+Friend: Mark "First" 999
